@@ -1,0 +1,25 @@
+<% if @user.errors.any? %>
+  <div>
+    <ul style="color: red">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+        <%= form_with model:@user,  local:true do |f| %>
+          <%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+
+          <%= f.text_field :introduction, autofocus: true, placeholder:"自己紹介かけ"%>
+          <%= f.attachment_field :profile_image %>
+
+          <%= f.submit "Update User" %>
+        <% end %>
+    </div>
+  </div>
+</div>
